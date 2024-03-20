@@ -27,7 +27,7 @@ class InsertAtFirst
         newNode.next=head;
         head=newNode;
     }
-
+    // to print Linked List
     void print()
     {
         if(head==null)

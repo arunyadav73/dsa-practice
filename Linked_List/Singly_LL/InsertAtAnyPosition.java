@@ -87,7 +87,7 @@ class InsertAtAnyPosition
         }
     }
 
-    // to print Lined List
+    // to print Linked List
     void print()
     {
         if(head==null)
