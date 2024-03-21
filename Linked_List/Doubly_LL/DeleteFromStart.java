@@ -35,7 +35,7 @@ class DeleteFromStart
             head.previous=null;
         }
     }
-
+    
     void insertAtLast(int data)
     {
         Node newnode=new Node(data);

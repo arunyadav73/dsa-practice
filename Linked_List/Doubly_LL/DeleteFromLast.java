@@ -1,15 +1,19 @@
-class DeleteLast
+class DeleteFromLast
 {
-    Node head;      // head of the Linked List
+    Node head;
+    // creating node
     class Node
     {
         int data;
-        Node next;
+        Node next;          // point next node
+        Node previous;      // point previous node
 
+        // constructor for creating new node
         Node(int data)
         {
             this.data=data;
             this.next=null;
+            this.previous=null;
         }
     }
 
@@ -27,19 +31,20 @@ class DeleteLast
         }
         else
         {
-            Node current=head;
-            while(current.next.next !=null)
+            Node current = head;
+            while(current.next.next != null)
             {
                 current=current.next;
             }
+            current.next.previous=null;
             current.next=null;
         }
     }
 
-    // to a node at the last of the linked list
+    // to insert into linked list
     void insertAtLast(int data)
     {
-        Node newnode = new Node(data);
+        Node newnode=new Node(data);
         if(head==null)
         {
             head=newnode;
@@ -47,26 +52,26 @@ class DeleteLast
         else
         {
             Node current=head;
-            while(current.next  != null)
+            while(current.next != null)
             {
-                current =current.next;
+                current=current.next;
             }
             current.next=newnode;
-            
+            newnode.previous=current;
         }
     }
 
-    // to print Linked List
+    // function to print Doubly Linked List
     void print()
     {
         if(head==null)
         {
-            System.out.println("Linked List is Empty can not print");
+            System.out.println("Doubly Linkedlist is Empty can not print any data");
         }
         else
         {
-            Node current=head;
-            while(current !=null)
+            Node current = head;
+            while(current != null)
             {
                 System.out.print(current.data+" --> ");
                 current=current.next;
@@ -77,7 +82,7 @@ class DeleteLast
 
     public static void main(String[] ar)
     {
-        DeleteLast List=new DeleteLast();
+        DeleteFromLast List=new DeleteFromLast();
 
         List.insertAtLast(1);
         List.insertAtLast(2);
@@ -112,5 +117,6 @@ class DeleteLast
         List.deleteLast();
         List.print();
         List.deleteLast();
+
     }
 }

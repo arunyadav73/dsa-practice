@@ -15,7 +15,7 @@ class InsertAtLast
         }
     }
 
-    // to a node at the last of the linked list
+    // to insert a node at last of linked list
     void insertAtLast(int data)
     {
         Node newnode = new Node(data);
