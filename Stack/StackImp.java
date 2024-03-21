@@ -1,3 +1,4 @@
+// Implementation of Stack using array
 class StackImp
 {
     int[] data;
@@ -14,6 +15,7 @@ class StackImp
         top=-1;
     }
 
+    // checking stack is empty or not
     boolean isNull()
     {
         if(top==-1)
@@ -26,6 +28,7 @@ class StackImp
         }
     }
 
+    // checking stack is full or not
     boolean isFull()
     {
         if(top==data.length-1)
@@ -38,6 +41,7 @@ class StackImp
         }
     }
 
+    // function to push elemnet
     void push(int element)
     {
         if(isFull())
@@ -53,6 +57,7 @@ class StackImp
         }
     }
 
+    // function to pop element from queue
     void pop()
     {
         if(isNull())
@@ -68,6 +73,7 @@ class StackImp
         }
     }
 
+    // to print peak element 
     void peak()
     {
         if(isNull())
@@ -82,20 +88,25 @@ class StackImp
 
     }
 
+    // to find top
+    void top()
+    {
+        System.out.println("Top of stack is : "+top);
+    }
+
+    // to print stack
     void print()
     {
         if(isNull())
         {
-            System.out.println("Stack is Empty ");
+            System.out.println("Stack is Empty");
             return;
         }
         else
         {
-            int current =top;
-            while(current != -1)
+            for(int i=0;i<=top;i++)
             {
-                System.out.println(data[current]);
-                current--;
+                System.out.println(data[i]);
             }
         }
     }
@@ -108,6 +119,7 @@ class StackImp
         stack.push(3);
         stack.push(4);
 
+        stack.top();
         stack.pop();
         System.out.println(stack.isNull());
 
@@ -121,6 +133,7 @@ class StackImp
 
         stack.push(7);
         stack.push(8);
+        stack.top();
 
         stack.print();
 
@@ -144,6 +157,7 @@ class StackImp
         stack.pop();
 
         stack.print();
+        stack.top();
         System.out.println(stack.isNull());
 
     } 
