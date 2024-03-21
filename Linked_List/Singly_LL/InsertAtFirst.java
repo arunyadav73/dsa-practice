@@ -42,7 +42,7 @@ class InsertAtFirst
                 System.out.print(current.data+" --> ");
                 current=current.next;
             }
-            System.out.println("End");
+            System.out.println("null");
         }
     }
 
