@@ -109,7 +109,6 @@ class DeleteFromStart
         List.deleteFromStart();
         List.print();
         List.deleteFromStart();
-        List.print();
-        
+        List.print(); 
     }
 }
