@@ -1,74 +1,20 @@
-// code to delete any position node from the Linked List
-class DeleteAnyNode
+class DeleteFromAnyPosition
 {
-    Node head;      // head of the Linked List
+
+    Node head;
+    // creating node
     class Node
     {
         int data;
-        Node next;
+        Node next;          // point next node
+        Node previous;      // point previous node
 
+        // constructor for creating new node
         Node(int data)
         {
             this.data=data;
             this.next=null;
-        }
-    }
-
-    // to a node at the last of the linked list
-    void insertAtLast(int data)
-    {
-        Node newnode = new Node(data);
-        if(head==null)
-        {
-            head=newnode;
-        }
-        else
-        {
-            Node current=head;
-            while(current.next  != null)
-            {
-                current =current.next;
-            }
-            current.next=newnode;
-            
-        }
-    }
-
-    // to print Linked List
-    void print()
-    {
-        if(head==null)
-        {
-            System.out.println("Linked List is Empty can not print");
-        }
-        else
-        {
-            Node current=head;
-            while(current !=null)
-            {
-                System.out.print(current.data+" --> ");
-                current=current.next;
-            }
-            System.out.println("null");
-        }
-    }
-
-    // to find size of the Linked List
-    int size()
-    {   int size = 0;          // initial size  of Linked List is 0
-        if(head==null)
-        {
-            return 0;
-        }
-        else
-        {
-            Node current=head;
-            while(current !=null)
-            {
-                size=size+1;
-                current=current.next;
-            }
-            return size;
+            this.previous=null;
         }
     }
 
@@ -98,6 +44,7 @@ class DeleteAnyNode
         else if(pos==1)
         {
             head=head.next;
+            head.previous=null;
         }
 
         // delete between nodes
@@ -109,6 +56,7 @@ class DeleteAnyNode
                 current=current.next;
             }
             current.next=current.next.next;
+            current.next.previous=current;
         }
 
         // when position = size,deleting last node
@@ -119,6 +67,7 @@ class DeleteAnyNode
             {
                 current=current.next;
             }
+            current.next.previous=null;
             current.next=null;
         }
 
@@ -129,11 +78,69 @@ class DeleteAnyNode
             System.out.println("Current size of the Linked List : "+size());
             System.out.println("Can not delete node at the position "+pos+"\n");
         }
+
+    }
+
+    // to insert into linked list
+    void insertAtLast(int data)
+    {
+        Node newnode=new Node(data);
+        if(head==null)
+        {
+            head=newnode;
+        }
+        else
+        {
+            Node current=head;
+            while(current.next != null)
+            {
+                current=current.next;
+            }
+            current.next=newnode;
+            newnode.previous=current;
+        }
+    }
+
+    // function to print Doubly Linked List
+    void print()
+    {
+        if(head==null)
+        {
+            System.out.println("Doubly Linkedlist is Empty can not print any data");
+        }
+        else
+        {
+            Node current = head;
+            while(current != null)
+            {
+                System.out.print(current.data+" --> ");
+                current=current.next;
+            }
+            System.out.println("null");
+        }
+    }
+
+    int size()
+    {   int size = 0;          // initial size  of Linked List is 0
+        if(head==null)
+        {
+            return 0;
+        }
+        else
+        {
+            Node current=head;
+            while(current !=null)
+            {
+                size=size+1;
+                current=current.next;
+            }
+            return size;
+        }
     }
 
     public static void main(String[] ar)
     {
-        DeleteAnyNode List=new DeleteAnyNode();
+        DeleteFromAnyPosition List=new DeleteFromAnyPosition();
 
         List.insertAtLast(1);
         List.insertAtLast(2);
@@ -188,4 +195,5 @@ class DeleteAnyNode
         List.deleteFromPosition(1);
         List.print();
     }
+
 }
