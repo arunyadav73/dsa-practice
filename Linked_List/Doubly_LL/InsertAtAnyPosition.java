@@ -1,24 +1,26 @@
-// Here we write code to add an node between two nodes of the linked list
 class InsertAtAnyPosition
 {
-
-    Node head;      // head of the Linked List  
+    Node head;
+    // creating node
     class Node
     {
         int data;
-        Node next;
+        Node next;          // point next node
+        Node previous;      // point previous node
 
+        // constructor for creating new node
         Node(int data)
         {
             this.data=data;
             this.next=null;
+            this.previous=null;
         }
     }
 
     // to at a node between two nodes of the linked list
     // here we pass position number of the new node to be added as pos
     void insertAtPosition(int data,int pos)
-    {   
+    {
         //creating new node
         Node newnode = new Node(data);
 
@@ -37,6 +39,7 @@ class InsertAtAnyPosition
         else if(pos==1)
         {
             newnode.next=head;
+            head.previous=newnode;
             head=newnode;
         }
         // insert at bitween nodes
@@ -48,17 +51,21 @@ class InsertAtAnyPosition
                 current=current.next;
             }
             newnode.next=current.next;
+            current.next.previous=newnode;
             current.next=newnode;
+            newnode.previous=current;
+            
         }
         // insert at last
         else if(pos==size()+1)
         {
             Node current=head;
-            while(current.next  != null)
+            while(current.next != null)
             {
-                current =current.next;
+                current=current.next;
             }
-            current.next=newnode; 
+            current.next=newnode;
+            newnode.previous=current;
         }
         // if position is invalid and greater then size
         else
@@ -69,9 +76,10 @@ class InsertAtAnyPosition
         }
     }
 
-    // to find size of the Linked List
+    // to find size of Linked list
     int size()
-    {   int size = 0;          // initial size  of Linked List is 0
+    {
+        int size=0;
         if(head==null)
         {
             return 0;
@@ -79,7 +87,7 @@ class InsertAtAnyPosition
         else
         {
             Node current=head;
-            while(current !=null)
+            while(current != null)
             {
                 size=size+1;
                 current=current.next;
@@ -88,29 +96,29 @@ class InsertAtAnyPosition
         }
     }
 
-    // to print Linked List
+    // function to print Doubly Linked List
     void print()
     {
         if(head==null)
         {
-            System.out.println("Linked List is Empty can not print any data");
+            System.out.println("Doubly Linkedlist is Empty can not print any data");
         }
         else
         {
-            Node current=head;
-            while(current !=null)
+            Node current = head;
+            while(current != null)
             {
                 System.out.print(current.data+" --> ");
                 current=current.next;
             }
             System.out.println("null");
-
         }
     }
 
-    public static void main(String[] args)
+    public static void main(String[] args )
     {
-        InsertAtAnyPosition List= new InsertAtAnyPosition();
+        InsertAtAnyPosition List = new InsertAtAnyPosition();
+
         List.insertAtPosition(1,1);
         List.print();
         List.insertAtPosition(2,2);
@@ -121,25 +129,27 @@ class InsertAtAnyPosition
         List.print();
         List.insertAtPosition(5,5);
         List.print();
-        List.insertAtPosition(6,6);
+        List.insertAtPosition(77,4);
         List.print();
-        List.insertAtPosition(721,0);
+        List.insertAtPosition(55,6);
         List.print();
-        List.insertAtPosition(67,6);
+        List.insertAtPosition(39,1);
         List.print();
-        List.insertAtPosition(11,55);
+        List.insertAtPosition(3,7);
         List.print();
-        List.insertAtPosition(14,1);
+        List.insertAtPosition(33,4);
         List.print();
-        List.insertAtPosition(3,19);
+        List.insertAtPosition(34,0);
         List.print();
-        List.insertAtPosition(55,3);
+        List.insertAtPosition(13,4);
         List.print();
-        List.insertAtPosition(99,0);
+        List.insertAtPosition(88,55);
         List.print();
-        List.insertAtPosition(99,4);
+        List.insertAtPosition(4,2);
         List.print();
+        
         System.out.println("Size of the Linked List : "+List.size());
+
     }
 
 }
